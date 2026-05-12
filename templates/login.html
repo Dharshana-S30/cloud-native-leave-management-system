@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* 🔥 CENTERING FIX */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(45deg, #43e97b, #38f9d7);
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>WELCOME</h2>
+
+    <form method="POST" action=""> 
+        {% csrf_token %}
+
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+
+        <button type="submit">Login</button>
+        <a href="{% url 'signup' %}">Create new account</a>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager Panel</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        table {
+            width: 90%;
+            margin: 40px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        th {
+            background: #ddd;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .approve {
+            background: green;
+        }
+
+        .reject {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Manager - Leave Requests</h2>
+
+<table>
+    <tr>
+        <th>User</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for leave in leaves %}
+    <tr>
+        <td>{{ leave.user.username }}</td>
+        <td>{{ leave.start_date }}</td>
+        <td>{{ leave.end_date }}</td>
+        <td>{{ leave.reason }}</td>
+        <td>{{ leave.status }}</td>
+        <td>
+            <a href="/update-status/{{ leave.id }}/Approved/" class="btn approve">Approve</a>
+            <a href="/update-status/{{ leave.id }}/Rejected/" class="btn reject">Reject</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div style="text-align:center;">
+    <a href="/logout/">Logout</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .dashboard {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .btn {
+            display: block;
+            width: 250px;
+            margin: 15px auto;
+            padding: 12px;
+            background: blue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <h1>Welcome, {{ request.user.username }}</h1>
+
+    <a href="/manager-leaves/" class="btn">View Leave Requests</a>
+    <a href="/logout/" class="btn">Logout</a>
+</div>
+
+</body>
+</html>

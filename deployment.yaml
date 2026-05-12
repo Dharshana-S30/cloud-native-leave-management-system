@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leave-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: leave-app
+  template:
+    metadata:
+      labels:
+        app: leave-app
+    spec:
+      containers:
+      - name: leave-app
+        image: leave-app
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
