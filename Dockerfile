@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1
 # Set working directory
 WORKDIR /app
 
-# Install dependencies first
+# Install dependencies
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
@@ -16,8 +16,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project files
 COPY . .
 
-# Expose Django port
+# Expose port
 EXPOSE 8000
 
-# Start Gunicorn server
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "leave_project.wsgi:application"]
+# Run migrations then start Gunicorn
+CMD ["sh", "-c", "python manage.py migrate && gunicorn --bind 0.0.0.0:8000 leave_project.wsgi:application"]
