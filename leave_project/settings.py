@@ -134,4 +134,4 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/employee/'   # after login
 LOGOUT_REDIRECT_URL = '/login/'     # after logout
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
