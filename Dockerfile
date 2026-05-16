@@ -10,14 +10,15 @@ WORKDIR /app
 
 # Install dependencies
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
 
+# Set dummy env vars for build time only
 ENV SECRET_KEY=dummy-build-secret-key-not-used-in-production
 ENV DEBUG=True
+ENV DB_ENGINE=django.db.backends.sqlite3
 
 # Collect static files
 RUN python manage.py collectstatic --noinput
