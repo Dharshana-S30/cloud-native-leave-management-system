@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
       - name: leave-app
-        image: dharshana20/leave-app:latest
+        image: dharshana20/leave-app:v2
+        imagePullPolicy: Always
 
         ports:
         - containerPort: 8000
